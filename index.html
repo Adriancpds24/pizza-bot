@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pizza Bot — Pedidos por voz con IA</title>
+<meta name="description" content="Demo de pedidos de pizzería por voz usando Gemini Live API. Proyecto de Adrián Céspedes." />
+<meta name="theme-color" content="#e05a33" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍕</text></svg>" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">🍕</span>
+      <div>
+        <h1>Bella Napoli</h1>
+        <p class="subtitle">Pizzería de barrio — pedidos por voz con IA</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel setup">
+      <div class="call-hero">
+        <button id="callBtn" class="call-fab" aria-label="Iniciar llamada">
+          <span class="call-fab-icon">📞</span>
+          <span id="callFabLabel" class="call-fab-label">Iniciar llamada</span>
+        </button>
+        <div class="call-info">
+          <div class="call-title">Llamar a la pizzería</div>
+          <p id="status" class="status">Desconectado</p>
+        </div>
+        <button id="hangupBtn" class="hangup-btn" disabled>Colgar</button>
+      </div>
+
+      <details class="key-config">
+        <summary>Configuración de API key</summary>
+        <label for="apiKey">API Key de Gemini</label>
+        <div class="row">
+          <input id="apiKey" type="password" placeholder="Pega tu API key aquí" autocomplete="off" />
+          <button id="saveKey" class="secondary">Guardar</button>
+        </div>
+        <p class="hint">Se guarda solo en tu navegador (localStorage). Consíguela gratis en <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com</a>.</p>
+      </details>
+    </section>
+
+    <section class="panel menu">
+      <h2>Carta</h2>
+      <p class="panel-sub">Toca un producto para ver ingredientes y alérgenos</p>
+      <div id="menuBox" class="menu-grid"></div>
+    </section>
+
+    <section class="panel order">
+      <h2>Pedido en vivo</h2>
+      <div id="orderBox" class="order-box">
+        <p class="placeholder">El carrito aparecerá aquí en cuanto empieces a pedir.</p>
+      </div>
+    </section>
+
+    <section class="panel transcript">
+      <h2>Conversación</h2>
+      <div id="transcript" class="transcript-box">
+        <p class="placeholder">Aquí aparecerá la conversación en tiempo real...</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="productModal" class="modal-overlay hidden">
+    <div class="modal-card" id="modalCard"></div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
